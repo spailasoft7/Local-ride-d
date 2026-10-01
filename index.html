@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalRide Driver</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <div class="brand">🚐 LocalRide</div>
+      <div class="subtitle">Driver</div>
+    </div>
+    <div class="pills">
+      <span id="gpsStatus" class="pill">GPS: waiting</span>
+      <span id="connStatus" class="pill">Connecting...</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="map-card"><div id="map"></div></section>
+
+    <section class="card" id="profileCard">
+      <h2>Your taxi</h2>
+      <div id="profileView" style="display:none">
+        <div id="profileSummary" class="status"></div>
+        <button id="editProfileBtn" class="small-btn offline" style="margin-top:10px">Edit details</button>
+      </div>
+      <div id="profileForm">
+        <label>Your name<input id="pfName" maxlength="40" autocomplete="name"></label>
+        <label>Taxi number<input id="pfTaxi" maxlength="12"></label>
+        <label>Vehicle (example: Toyota Quantum)<input id="pfVehicle" maxlength="30"></label>
+        <label>Total seats<input id="pfSeats" type="number" inputmode="numeric" min="1" max="60"></label>
+        <button id="saveProfileBtn">Save taxi details</button>
+        <div id="profileError" class="muted" style="color:#d93025;margin-top:8px"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h1>Driver mode</h1>
+      <p class="muted">When you go available, passengers on LocalRide can see your taxi.</p>
+
+      <div class="location-row">
+        <span>📍</span>
+        <div>
+          <strong>Your location</strong>
+          <div id="locationText" class="muted">Waiting for GPS...</div>
+        </div>
+      </div>
+
+      <button id="availabilityBtn">GO AVAILABLE</button>
+      <div id="driverStatus" class="status">🔴 You are offline.</div>
+      <div id="sentStatus" class="muted" style="margin-top:8px"></div>
+      <div id="awakeStatus" class="muted"></div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
